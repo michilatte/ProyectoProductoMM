@@ -3,13 +3,11 @@ package controlador;
 import java.awt.Dimension;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.annotation.Resource;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.plaf.basic.BasicListUI;
 import viewInterna.*;
 import proyecto_producto.*;
 import modelo.*;
@@ -63,6 +61,7 @@ public class ControllerPersona {
         this.vistaP.getjTableDatosPersonas().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         listapersonamodel = this.vistaP.getjTableDatosPersonas().getSelectionModel();
         listapersonamodel.addListSelectionListener(new ListSelectionListener() {
+            @Override
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
                     personaSeleccionada();
@@ -72,37 +71,18 @@ public class ControllerPersona {
         });
         this.vistaP.getjButtonBuscarPer().addActionListener(b -> buscarPersona());
         this.vistaP.getjCheckBoxMostrarTP().addActionListener(bc -> buscarPersona());
-        this.vistaP.getjButtonLimpiarPer1().addActionListener(lp ->limpiarBusquedaPer());
+        this.vistaP.getjButtonLimpiarPer1().addActionListener(lp -> limpiarBusquedaPer());
 
     }
 
-    //M É T O D O S  C R U D 
+    //M É T O D O S  C R U D
     //CREAR PERSONA
     public void crearPersona() {
-        if (validarCampos() == false) {
-            Resouces.warning("Atención!!", "Por favor, llene todos los campos");
+        if (camposVacios() == false) {
+            Resouces.warning("ATENCIÓN!!", "Por favor, llene todos los campos");
         } else {
-            per = new Persona();
-            per.setNombrePer(this.vistaP.getjTextFieldNombres().getText());
-            per.setApellidoPer(this.vistaP.getjTextFieldApellidos().getText());
-            per.setCedulaPer(this.vistaP.getjTextFieldCedula().getText());
-            per.setCelularPer(this.vistaP.getjTextFieldCelular().getText());
-            per.setCorreoPer(this.vistaP.getjTextFieldCorreo().getText());
-            per.setDireccionPer(this.vistaP.getjTextFieldDireccion().getText());
-
-            modeloPersona.create(per);
-            modeloTP.agregar(per);
-            limpiarPersonas();
-            Resouces.success("Atención!!", "Persona Creada Exitosamente");
-        }
-    }
-
-    //EDITAR PERSONA
-    public void editarPersona() {
-        if (validarCampos() == false) {
-            Resouces.warning("Atención!!", "Por favor, llene todos los campos");
-        } else {
-            if (per != null) {
+            if (validarCampos() == true) {
+                per = new Persona();
                 per.setNombrePer(this.vistaP.getjTextFieldNombres().getText());
                 per.setApellidoPer(this.vistaP.getjTextFieldApellidos().getText());
                 per.setCedulaPer(this.vistaP.getjTextFieldCedula().getText());
@@ -110,17 +90,41 @@ public class ControllerPersona {
                 per.setCorreoPer(this.vistaP.getjTextFieldCorreo().getText());
                 per.setDireccionPer(this.vistaP.getjTextFieldDireccion().getText());
 
-                try {
-                    int select = JOptionPane.showConfirmDialog(vistaP, "¿ESTÁS SEGUR@ DE EDITAR LOS DATOS DE ESTA PERSONA?");
-                    if (select == JOptionPane.YES_OPTION) {
-                        modeloPersona.edit(per);
-                        modeloTP.eliminar(per);
-                        modeloTP.actualizar(per);
-                        limpiarPersonas();
-                        Resouces.success("Atención!!", "Persona Editada Exitosamente");
+                modeloPersona.create(per);
+                modeloTP.agregar(per);
+                limpiarPersonas();
+                Resouces.success("Atención!!", "Persona Creada Exitosamente");
+
+            }
+        }
+    }
+
+    //EDITAR PERSONA
+    public void editarPersona() {
+        if (camposVacios() == false) {
+            Resouces.warning("ATENCIÓN!!", "Por favor, llene todos los campos");
+        } else {
+            if (validarCampos() == true) {
+                if (per != null) {
+                    per.setNombrePer(this.vistaP.getjTextFieldNombres().getText());
+                    per.setApellidoPer(this.vistaP.getjTextFieldApellidos().getText());
+                    per.setCedulaPer(this.vistaP.getjTextFieldCedula().getText());
+                    per.setCelularPer(this.vistaP.getjTextFieldCelular().getText());
+                    per.setCorreoPer(this.vistaP.getjTextFieldCorreo().getText());
+                    per.setDireccionPer(this.vistaP.getjTextFieldDireccion().getText());
+
+                    try {
+                        int select = JOptionPane.showConfirmDialog(vistaP, "¿ESTÁS SEGUR@ DE EDITAR LOS DATOS DE ESTA PERSONA?");
+                        if (select == JOptionPane.YES_OPTION) {
+                            modeloPersona.edit(per);
+                            modeloTP.eliminar(per);
+                            modeloTP.actualizar(per);
+                            limpiarPersonas();
+                            Resouces.success("Atención!!", "Persona Editada Exitosamente");
+                        }
+                    } catch (Exception e) {
+                        Logger.getLogger(ControllerPersona.class.getName()).log(Level.SEVERE, null, e);
                     }
-                } catch (Exception e) {
-                    Logger.getLogger(ControllerPersona.class.getName()).log(Level.SEVERE, null, e);
                 }
             }
         }
@@ -144,7 +148,6 @@ public class ControllerPersona {
         }
     }
 
-    
     public void limpiarPersonas() {
         vistaP.getjTextFieldNombres().setText("");
         vistaP.getjTextFieldApellidos().setText("");
@@ -188,58 +191,83 @@ public class ControllerPersona {
             modeloTP.fireTableDataChanged();
         } else {
             if (!this.vistaP.getjTextFieldBusquedaPer().getText().equals("")) {
-                modeloTP.setFilas(modeloPersona.buscarPersona(this.vistaP.getjTextFieldBusquedaPer().getText()));
+                modeloTP.setFilas(modeloPersona.buscarPersonaCed(this.vistaP.getjTextFieldBusquedaPer().getText()));
                 modeloTP.fireTableDataChanged();
             } else {
                 limpiarBusquedaPer();
             }
         }
     }
-    
+
     public boolean validarCampos() {
+        Validaciones validar = new Validaciones();
+        boolean validado = false;
+
+        if (validar.ValidarTextoConEspacio(this.vistaP.getjTextFieldNombres().getText())) {
+
+            if (validar.ValidarTextoConEspacio(this.vistaP.getjTextFieldApellidos().getText())) {
+
+                //segunda  valid
+                if (validar.validarCedula(this.vistaP.getjTextFieldCedula().getText())) {
+
+                    //Segunda valid
+                    if (validar.validarCelu(this.vistaP.getjTextFieldCelular().getText())) {
+
+                        //Segunda valid
+                        if (validar.validarEmail(this.vistaP.getjTextFieldCorreo().getText())) {
+
+                            //Segunda valid
+                            if (validar.validarDirec(this.vistaP.getjTextFieldDireccion().getText())) {
+                                //Segunda valid
+                                validado = true;
+                            } else {
+                                Resouces.warning("Atención", "Dirección Incorrecta");
+                            }
+
+                        } else {
+                            Resouces.warning("Atención", "Correo Incorrecto");
+                        }
+
+                    } else {
+                        Resouces.warning("Atención", "Nro Celular Incorrecto");
+                    }
+
+                } else {
+                    Resouces.warning("Atención", "Cédula Incorrecta");
+                }
+
+            } else {
+                Resouces.warning("Atención", "Apellido Incorrecto");
+            }
+
+        } else {
+            Resouces.warning("Atención", "Nombre Incorrecto");
+        }
+
+        return validado;
+    }
+
+    public boolean camposVacios() {
         boolean validar = true;
         if (this.vistaP.getjTextFieldNombres().getText().isEmpty()) {
             validar = false;
-        } else {
-            if (!this.vistaP.getjTextFieldNombres().getText().matches("[a-zA-z]+([ '-][a-zA-Z]+)*")) {
-                JOptionPane.showMessageDialog(vistaP, "Nombre incorrecto");
-                validar = false;
-            }
         }
         if (this.vistaP.getjTextFieldApellidos().getText().isEmpty()) {
             validar = false;
-        } else {
-            if (!this.vistaP.getjTextFieldApellidos().getText().matches("[a-zA-z]+([ '-][a-zA-Z]+)*")) {
-                JOptionPane.showMessageDialog(vistaP, "Apellido incorrecto");
-                validar = false;
-            }
         }
         if (this.vistaP.getjTextFieldCedula().getText().isEmpty()) {
             validar = false;
-        } else {
-            if (!this.vistaP.getjTextFieldCedula().getText().matches("[^a-zA-Z]|\\d{10}$")) {
-                JOptionPane.showMessageDialog(vistaP, "Cédula incorrecta");
-                validar = false;
-            }
         }
         if (this.vistaP.getjTextFieldCorreo().getText().isEmpty()) {
             validar = false;
-        } else {
-            if (!this.vistaP.getjTextFieldCorreo().getText().matches("[^@]+@[^@]+\\.[a-zA-Z]{2,}")) {
-                JOptionPane.showMessageDialog(vistaP, "Correo incorrecto");
-                validar = false;
-            }
         }
         if (this.vistaP.getjTextFieldCelular().getText().isEmpty()) {
             validar = false;
-        } else {
-            if (!this.vistaP.getjTextFieldCelular().getText().matches("[^a-zA-Z]|\\d{10}$")) {
-                JOptionPane.showMessageDialog(vistaP, "Nro Celular  incorrecto");
-                validar = false;
-            }
+        }
+        if (this.vistaP.getjTextFieldDireccion().getText().isEmpty()) {
+            validar = false;
         }
         return validar;
     }
 
-    
 }

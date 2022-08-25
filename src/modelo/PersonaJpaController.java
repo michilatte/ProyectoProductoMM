@@ -186,13 +186,78 @@ public class PersonaJpaController implements Serializable {
         }
     }
     
-    public List<Persona> buscarPersona(String cedula) {
+    public List<Persona> buscarPersonaCed(String cedula) {
         System.out.println(cedula);
         EntityManager em = getEntityManager();
         try {
             //Para realizar consultas 
             TypedQuery<Persona> query = em.createNamedQuery("Persona.findByCedulaPer", Persona.class);
             query.setParameter("cedulaPer", cedula);
+            List<Persona> list = query.getResultList();
+            return list;
+        } finally {
+            em.close();
+        }
+    }
+    public List<Persona> buscarPersonaNom(String nombre) {
+        //System.out.println(nombre);
+        EntityManager em = getEntityManager();
+        try {
+            //Para realizar consultas 
+            TypedQuery<Persona> query = em.createNamedQuery("Persona.findByNombrePer", Persona.class);
+            query.setParameter("nombrePer", nombre);
+            List<Persona> list = query.getResultList();
+            return list;
+        } finally {
+            em.close();
+        }
+    }
+    public List<Persona> buscarPersonaApe(String apellido) {
+        //System.out.println(apellido);
+        EntityManager em = getEntityManager();
+        try {
+            //Para realizar consultas 
+            TypedQuery<Persona> query = em.createNamedQuery("Persona.findByApellidoPer", Persona.class);
+            query.setParameter("apellidoPer", apellido);
+            List<Persona> list = query.getResultList();
+            return list;
+        } finally {
+            em.close();
+        }
+    }
+    public List<Persona> buscarPersonaCel(String celular) {
+        //System.out.println(celular);
+        EntityManager em = getEntityManager();
+        try {
+            //Para realizar consultas 
+            TypedQuery<Persona> query = em.createNamedQuery("Persona.findByCelularPer", Persona.class);
+            query.setParameter("apellidoPer", celular);
+            List<Persona> list = query.getResultList();
+            return list;
+        } finally {
+            em.close();
+        }
+    }
+    public List<Persona> buscarPersonaCorreo(String correo) {
+        //System.out.println(correo);
+        EntityManager em = getEntityManager();
+        try {
+            //Para realizar consultas 
+            TypedQuery<Persona> query = em.createNamedQuery("Persona.findByCorreoPer", Persona.class);
+            query.setParameter("correoPer", correo);
+            List<Persona> list = query.getResultList();
+            return list;
+        } finally {
+            em.close();
+        }
+    }
+    public List<Persona> buscarPersonaDir(String direc) {
+        //System.out.println(direc);
+        EntityManager em = getEntityManager();
+        try {
+            //Para realizar consultas 
+            TypedQuery<Persona> query = em.createNamedQuery("Persona.findByDireccionPer", Persona.class);
+            query.setParameter("direccionPer", direc);
             List<Persona> list = query.getResultList();
             return list;
         } finally {

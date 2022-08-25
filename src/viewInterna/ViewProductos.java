@@ -27,6 +27,14 @@ public class ViewProductos extends javax.swing.JInternalFrame {
         return jButtonBuscarPro;
     }
 
+    public JButton getjButtonReportarPro() {
+        return jButtonReportarPro;
+    }
+
+    public void setjButtonReportarPro(JButton jButtonReportarPro) {
+        this.jButtonReportarPro = jButtonReportarPro;
+    }
+
     public void setjButtonBuscarPro(JButton jButtonBuscarPro) {
         this.jButtonBuscarPro = jButtonBuscarPro;
     }
@@ -153,7 +161,7 @@ public class ViewProductos extends javax.swing.JInternalFrame {
         jTableDatosProductos = new javax.swing.JTable();
         jButtonCancelarPro = new javax.swing.JButton();
         jButtonImprimirPro = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonReportarPro = new javax.swing.JButton();
         jSeparator20 = new javax.swing.JSeparator();
         jSeparator21 = new javax.swing.JSeparator();
         jSeparator22 = new javax.swing.JSeparator();
@@ -240,10 +248,10 @@ public class ViewProductos extends javax.swing.JInternalFrame {
         jButtonImprimirPro.setBorder(null);
         jPanel5.add(jButtonImprimirPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 39, 35));
 
-        jButton2.setBackground(new java.awt.Color(237, 242, 244));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/boxes.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 30, 35));
+        jButtonReportarPro.setBackground(new java.awt.Color(237, 242, 244));
+        jButtonReportarPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/boxes.png"))); // NOI18N
+        jButtonReportarPro.setBorder(null);
+        jPanel5.add(jButtonReportarPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 30, 35));
 
         jSeparator20.setBackground(new java.awt.Color(0, 29, 61));
         jSeparator20.setPreferredSize(new java.awt.Dimension(0, 3));
@@ -455,7 +463,6 @@ public class ViewProductos extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonBuscarPro;
     private javax.swing.JButton jButtonCancelarPro;
     private javax.swing.JButton jButtonCrearPro;
@@ -464,6 +471,7 @@ public class ViewProductos extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonImprimirPro;
     private javax.swing.JButton jButtonLimpiarPro;
     private javax.swing.JButton jButtonLimpiarProB;
+    private javax.swing.JButton jButtonReportarPro;
     private javax.swing.JCheckBox jCheckBoxMostrarT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;

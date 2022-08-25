@@ -148,6 +148,22 @@ public class ViewPersonas extends javax.swing.JInternalFrame {
     public void setjCheckBoxMostrarTP(JCheckBox jCheckBoxMostrarTP) {
         this.jCheckBoxMostrarTP = jCheckBoxMostrarTP;
     }
+
+    public JButton getjButtonImprimir() {
+        return jButtonImprimir;
+    }
+
+    public void setjButtonImprimir(JButton jButtonImprimir) {
+        this.jButtonImprimir = jButtonImprimir;
+    }
+
+    public JButton getjButtonReportes() {
+        return jButtonReportes;
+    }
+
+    public void setjButtonReportes(JButton jButtonReportes) {
+        this.jButtonReportes = jButtonReportes;
+    }
     
 
     
@@ -167,8 +183,8 @@ public class ViewPersonas extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableDatosPersonas = new javax.swing.JTable();
         jButtonCancelarPersona = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonImprimir = new javax.swing.JButton();
+        jButtonReportes = new javax.swing.JButton();
         jSeparator20 = new javax.swing.JSeparator();
         jSeparator21 = new javax.swing.JSeparator();
         jSeparator22 = new javax.swing.JSeparator();
@@ -269,15 +285,15 @@ public class ViewPersonas extends javax.swing.JInternalFrame {
         jButtonCancelarPersona.setBorder(null);
         jPanel5.add(jButtonCancelarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 274, 90, 35));
 
-        jButton1.setBackground(new java.awt.Color(237, 242, 244));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/imprimir.png"))); // NOI18N
-        jButton1.setBorder(null);
-        jPanel5.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 274, 39, 35));
+        jButtonImprimir.setBackground(new java.awt.Color(237, 242, 244));
+        jButtonImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/imprimir.png"))); // NOI18N
+        jButtonImprimir.setBorder(null);
+        jPanel5.add(jButtonImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 274, 39, 35));
 
-        jButton2.setBackground(new java.awt.Color(237, 242, 244));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/boxes.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 274, 30, 35));
+        jButtonReportes.setBackground(new java.awt.Color(237, 242, 244));
+        jButtonReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/boxes.png"))); // NOI18N
+        jButtonReportes.setBorder(null);
+        jPanel5.add(jButtonReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 274, 30, 35));
 
         jSeparator20.setBackground(new java.awt.Color(0, 29, 61));
         jPanel5.add(jSeparator20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 610, 10));
@@ -342,24 +358,28 @@ public class ViewPersonas extends javax.swing.JInternalFrame {
 
         jTextFieldApellidos.setBackground(new java.awt.Color(237, 242, 244));
         jTextFieldApellidos.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jTextFieldApellidos.setToolTipText("No de un espacio al final, y no use numeros o caracteres especiales");
         jTextFieldApellidos.setBorder(null);
         jTextFieldApellidos.setPreferredSize(new java.awt.Dimension(74, 25));
         jPanel4.add(jTextFieldApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 260, -1));
 
         jTextFieldCedula.setBackground(new java.awt.Color(237, 242, 244));
         jTextFieldCedula.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jTextFieldCedula.setToolTipText("Ingrese una cédula Ecuatoriana valida");
         jTextFieldCedula.setBorder(null);
         jTextFieldCedula.setPreferredSize(new java.awt.Dimension(74, 25));
         jPanel4.add(jTextFieldCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 260, -1));
 
         jTextFieldCorreo.setBackground(new java.awt.Color(237, 242, 244));
         jTextFieldCorreo.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jTextFieldCorreo.setToolTipText("Implemente los caracteres: @   .");
         jTextFieldCorreo.setBorder(null);
         jTextFieldCorreo.setPreferredSize(new java.awt.Dimension(74, 25));
         jPanel4.add(jTextFieldCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 260, -1));
 
         jTextFieldCelular.setBackground(new java.awt.Color(237, 242, 244));
         jTextFieldCelular.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jTextFieldCelular.setToolTipText("10 digitos");
         jTextFieldCelular.setBorder(null);
         jTextFieldCelular.setPreferredSize(new java.awt.Dimension(74, 25));
         jPanel4.add(jTextFieldCelular, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 260, -1));
@@ -404,6 +424,7 @@ public class ViewPersonas extends javax.swing.JInternalFrame {
 
         jTextFieldNombres.setBackground(new java.awt.Color(237, 242, 244));
         jTextFieldNombres.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jTextFieldNombres.setToolTipText("No de un espacio al final, y no use numeros o caracteres especiales");
         jTextFieldNombres.setBorder(null);
         jTextFieldNombres.setPreferredSize(new java.awt.Dimension(74, 25));
         jPanel4.add(jTextFieldNombres, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 260, -1));
@@ -523,15 +544,15 @@ public class ViewPersonas extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonBuscarPer;
     private javax.swing.JButton jButtonCancelarPersona;
     private javax.swing.JButton jButtonCrearPer;
     private javax.swing.JButton jButtonEditarPer;
     private javax.swing.JButton jButtonEliminarPer;
+    private javax.swing.JButton jButtonImprimir;
     private javax.swing.JButton jButtonLimpiarPer;
     private javax.swing.JButton jButtonLimpiarPer1;
+    private javax.swing.JButton jButtonReportes;
     private javax.swing.JCheckBox jCheckBoxMostrarTP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

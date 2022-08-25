@@ -49,20 +49,20 @@ public class ControllerLogin {
         try{
             Usuario user = modelo.buscarUsuario(usuario, clave);
         if(user!=null){
-            JOptionPane.showMessageDialog(vistaL, "Usuario Correcto \n"+"~ BIENVENID@ ~");
+            Resouces.success("Usuario Correcto","~ BIENVENID@ ~");
             new ControllerAdministrador(vistaA,manager);
             limpiarLogin();
             vistaA.setVisible(true);
             vistaL.dispose();
         }else{
-            JOptionPane.showMessageDialog(vistaL, "Usuario Incorrecto");
+            Resouces.error("Atención!!", "Usuario Incorrecto");
         } 
         }catch(PersistenceException e){
-            JOptionPane.showMessageDialog(vistaL, "ERROR! Conectese a la Base de Datos");
+            Resouces.error("ERROR!!","Conectese a la Base de Datos");
         }
     }
     public void  salirLogin(){
-        JOptionPane.showMessageDialog(vistaL, "~Saliendo del programa~");
+        //JOptionPane.showMessageDialog(vistaL, "~Saliendo del programa~");
         System.exit(0);
     }
     public void regresar(){

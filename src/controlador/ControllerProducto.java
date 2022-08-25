@@ -26,6 +26,7 @@ public class ControllerProducto {
     Producto pro;
     JDesktopPane panelEscritorio;
     ListSelectionModel listaproductomodel;
+    Validaciones validacion;
 
     public ControllerProducto(ViewProductos vistaPro, ManagerFactory manage, ProductoJpaController modeloProducto, /*Persona per,*/ JDesktopPane panelEscritorio) {
         //this.vistaPro = vistaPro;
@@ -188,7 +189,7 @@ public class ControllerProducto {
         if (this.vistaPro.getjTextFieldPrecioPro().getText().isEmpty()) {
             validar = false;
         } else {
-            if (!validarNumeros(this.vistaPro.getjTextFieldPrecioPro().getText())) {
+            if (!validacion.validarNumeros(this.vistaPro.getjTextFieldPrecioPro().getText())) {
                 JOptionPane.showMessageDialog(vistaPro, "Debe ser un precio numérico");
                 validar = false;
             }
@@ -196,19 +197,5 @@ public class ControllerProducto {
         return validar;
     }
 
-    public boolean validarNumeros(String x) {
-        try {
-            double n = Double.parseDouble(x);
-            if (n < 0) {
-                return false;
-            } else {
-                if (n >= 1) {
-                    return true;
-                }
-            }
-        } catch (NumberFormatException e) {
-            return false;
-        }
-        return false;
-    }
+    
 }

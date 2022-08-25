@@ -27,6 +27,14 @@ public class ViewUsuarios extends javax.swing.JInternalFrame {
         return jButtonBuscarUsu;
     }
 
+    public JButton getjButtonReportarUs() {
+        return jButtonReportarUs;
+    }
+
+    public void setjButtonReportarUs(JButton jButtonReportarUs) {
+        this.jButtonReportarUs = jButtonReportarUs;
+    }
+
     public void setjButtonBuscarUsu(JButton jButtonBuscarUsu) {
         this.jButtonBuscarUsu = jButtonBuscarUsu;
     }
@@ -163,7 +171,7 @@ public class ViewUsuarios extends javax.swing.JInternalFrame {
         jTableDatosUsuarios = new javax.swing.JTable();
         jButtonCancelarUsu = new javax.swing.JButton();
         jButtonImprimirUsu = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jButtonReportarUs = new javax.swing.JButton();
         jSeparator20 = new javax.swing.JSeparator();
         jSeparator21 = new javax.swing.JSeparator();
         jSeparator22 = new javax.swing.JSeparator();
@@ -250,10 +258,10 @@ public class ViewUsuarios extends javax.swing.JInternalFrame {
         jButtonImprimirUsu.setBorder(null);
         jPanel5.add(jButtonImprimirUsu, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 39, 35));
 
-        jButton2.setBackground(new java.awt.Color(237, 242, 244));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/boxes.png"))); // NOI18N
-        jButton2.setBorder(null);
-        jPanel5.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 30, 35));
+        jButtonReportarUs.setBackground(new java.awt.Color(237, 242, 244));
+        jButtonReportarUs.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/boxes.png"))); // NOI18N
+        jButtonReportarUs.setBorder(null);
+        jPanel5.add(jButtonReportarUs, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 30, 35));
 
         jSeparator20.setBackground(new java.awt.Color(0, 29, 61));
         jSeparator20.setPreferredSize(new java.awt.Dimension(0, 3));
@@ -298,6 +306,7 @@ public class ViewUsuarios extends javax.swing.JInternalFrame {
 
         jTextFieldUsuario.setBackground(new java.awt.Color(237, 242, 244));
         jTextFieldUsuario.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jTextFieldUsuario.setToolTipText("Utilice letras y numeros, pero sin carateres especiales");
         jTextFieldUsuario.setBorder(null);
         jTextFieldUsuario.setPreferredSize(new java.awt.Dimension(74, 25));
         jPanel4.add(jTextFieldUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 260, -1));
@@ -354,6 +363,7 @@ public class ViewUsuarios extends javax.swing.JInternalFrame {
 
         jPasswordFieldClave.setBackground(new java.awt.Color(237, 242, 244));
         jPasswordFieldClave.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jPasswordFieldClave.setToolTipText("min 1 letra mayus | min 1 letra minus | min 1 caract especial | min 1 numero | minimo 8 caracteres max 20");
         jPasswordFieldClave.setBorder(null);
         jPanel4.add(jPasswordFieldClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 260, 20));
 
@@ -464,7 +474,6 @@ public class ViewUsuarios extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButtonBuscarUsu;
     private javax.swing.JButton jButtonCancelarUsu;
     private javax.swing.JButton jButtonCrearUsu;
@@ -473,6 +482,7 @@ public class ViewUsuarios extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonImprimirUsu;
     private javax.swing.JButton jButtonLimpiarUsu;
     private javax.swing.JButton jButtonLimpiarUsuB;
+    private javax.swing.JButton jButtonReportarUs;
     private javax.swing.JCheckBox jCheckBoxMostrarTU;
     private javax.swing.JComboBox<String> jComboBoxPersonasUsu;
     private javax.swing.JLabel jLabel1;

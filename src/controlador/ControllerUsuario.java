@@ -28,6 +28,7 @@ public class ControllerUsuario {
     ModeloTablaUsuario modeloTU;
     JDesktopPane panelEscritorio;
     ListSelectionModel listausuariomodel;
+    Validaciones validacion;
 
     public ControllerUsuario(ViewUsuarios vistaU, ManagerFactory manage, UsuarioJpaController modeloUsuario, /*Persona per,*/ JDesktopPane panelEscritorio) {
         this.vistaU = vistaU;
@@ -195,34 +196,22 @@ public class ControllerUsuario {
         if (this.vistaU.getjTextFieldUsuario().getText().isEmpty()) {
             validar = false;
         } else {
-            if (!this.vistaU.getjTextFieldUsuario().getText().matches("^[a-zA-Z]{3,}[\\d]*$")) {
-                Resouces.warning("Atención!!", "Nombre de Usuario sin caracteres especiales");
+            if (!validacion.validarUsuario(this.vistaU.getjTextFieldUsuario().getText())) {
+                Resouces.warning("Atención!!", "Nombre de Usuario Incorrecto");
                 validar = false;
             }
         }
         if (this.vistaU.getjPasswordFieldClave().getText().isEmpty()) {
             validar = false;
         }
-//        else {
-//            if (!validarContrasena(this.vistaU.getjPasswordFieldClave().getText())) {
-//                JOptionPane.showMessageDialog(vistaU, "Debe ser un precio numérico");
-//                validar = false;
-//            }
-//        }
+        else {
+            if (!validacion.validarContrasena(this.vistaU.getjPasswordFieldClave().getText())) {
+                Resouces.warning("Atención!!", "Contraseña Incorrecta");
+                validar = false;
+            }
+        }
         return validar;
     }
 
-    public boolean validarUsuario(String usuario) {
-        boolean validar = usuario.matches("^[a-zA-Z]{3,}[\\d]*$");
-        //puede ser texto con numero ejm: Organizacion12, o solo texto
-        return validar;
-    }
-
-    public boolean validarContrasena(String password) {
-        boolean validar = false;
-        String expresion = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%.!%-_^*&+=()])(?=\\S+$).{8,20}$";//MINIMO 1 mayus y 1 minus , 1 caract especial, minimo 8 y max 20
-        //min 1 letra mayus | min 1 letra minus | min 1 caract especial | min 1 numero | minimo 8 caracteres max 20
-        validar = password.matches(expresion);
-        return validar;
-    }
+   
 }
