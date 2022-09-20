@@ -1,6 +1,8 @@
 package controlador;
 
 import java.awt.Dimension;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
@@ -72,6 +74,8 @@ public class ControllerProducto {
         this.vistaPro.getjButtonBuscarPro().addActionListener(b -> buscarProducto());
         this.vistaPro.getjCheckBoxMostrarT().addActionListener(bc -> buscarProducto());
         this.vistaPro.getjButtonLimpiarProB().addActionListener(lp ->limpiarBusquedaPro());
+        this.vistaPro.getjButtonReportarProGeneral().addActionListener(lr-> reporteGeneral());
+        this.vistaPro.getjButtonReporteIndivPro().addActionListener(lr-> reporteIndividual());
     }
 
     //M É T O D O S  C R U D 
@@ -135,6 +139,20 @@ public class ControllerProducto {
         }
     }
 
+    public void reporteGeneral() {
+        Resouces.imprimirReporte(ManagerFactory.getConnection(manage.getEmf().createEntityManager()), "/reportes/Productos.jasper",new HashMap());
+    }
+    public void reporteIndividual(){
+        if(pro != null){
+            Map parameters = new HashMap();
+            parameters.put("cod",pro.getIdproducto());
+            Resouces.imprimirReporte(ManagerFactory.getConnection(manage.getEmf().createEntityManager()), "/reportes/proIndividual.jasper",parameters);
+   
+        }else{
+            Resouces.warning("Atención!!", "Debe seleccionar un producto");
+        }
+    }
+    
     public void limpiarProductos() {
         vistaPro.getjTextFieldNombrePro().setText("");
         vistaPro.getjTextFieldPrecioPro().setText("");

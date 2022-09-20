@@ -149,21 +149,22 @@ public class ViewPersonas extends javax.swing.JInternalFrame {
         this.jCheckBoxMostrarTP = jCheckBoxMostrarTP;
     }
 
-    public JButton getjButtonImprimir() {
-        return jButtonImprimir;
+    public JButton getjButtonReporteGeneral() {
+        return jButtonReporteGeneral;
     }
 
-    public void setjButtonImprimir(JButton jButtonImprimir) {
-        this.jButtonImprimir = jButtonImprimir;
+    public void setjButtonReporteGeneral(JButton jButtonReporteGeneral) {
+        this.jButtonReporteGeneral = jButtonReporteGeneral;
     }
 
-    public JButton getjButtonReportes() {
-        return jButtonReportes;
+    public JButton getjButtonReporteIndividual() {
+        return jButtonReporteIndividual;
     }
 
-    public void setjButtonReportes(JButton jButtonReportes) {
-        this.jButtonReportes = jButtonReportes;
+    public void setjButtonReporteIndividual(JButton jButtonReporteIndividual) {
+        this.jButtonReporteIndividual = jButtonReporteIndividual;
     }
+
     
 
     
@@ -183,8 +184,8 @@ public class ViewPersonas extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableDatosPersonas = new javax.swing.JTable();
         jButtonCancelarPersona = new javax.swing.JButton();
-        jButtonImprimir = new javax.swing.JButton();
-        jButtonReportes = new javax.swing.JButton();
+        jButtonReporteIndividual = new javax.swing.JButton();
+        jButtonReporteGeneral = new javax.swing.JButton();
         jSeparator20 = new javax.swing.JSeparator();
         jSeparator21 = new javax.swing.JSeparator();
         jSeparator22 = new javax.swing.JSeparator();
@@ -285,15 +286,15 @@ public class ViewPersonas extends javax.swing.JInternalFrame {
         jButtonCancelarPersona.setBorder(null);
         jPanel5.add(jButtonCancelarPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 274, 90, 35));
 
-        jButtonImprimir.setBackground(new java.awt.Color(237, 242, 244));
-        jButtonImprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/imprimir.png"))); // NOI18N
-        jButtonImprimir.setBorder(null);
-        jPanel5.add(jButtonImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 274, 39, 35));
+        jButtonReporteIndividual.setBackground(new java.awt.Color(237, 242, 244));
+        jButtonReporteIndividual.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/imprimir.png"))); // NOI18N
+        jButtonReporteIndividual.setBorder(null);
+        jPanel5.add(jButtonReporteIndividual, new org.netbeans.lib.awtextra.AbsoluteConstraints(367, 274, 39, 35));
 
-        jButtonReportes.setBackground(new java.awt.Color(237, 242, 244));
-        jButtonReportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/boxes.png"))); // NOI18N
-        jButtonReportes.setBorder(null);
-        jPanel5.add(jButtonReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 274, 30, 35));
+        jButtonReporteGeneral.setBackground(new java.awt.Color(237, 242, 244));
+        jButtonReporteGeneral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/boxes.png"))); // NOI18N
+        jButtonReporteGeneral.setBorder(null);
+        jPanel5.add(jButtonReporteGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(442, 274, 30, 35));
 
         jSeparator20.setBackground(new java.awt.Color(0, 29, 61));
         jPanel5.add(jSeparator20, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 610, 10));
@@ -549,10 +550,10 @@ public class ViewPersonas extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonCrearPer;
     private javax.swing.JButton jButtonEditarPer;
     private javax.swing.JButton jButtonEliminarPer;
-    private javax.swing.JButton jButtonImprimir;
     private javax.swing.JButton jButtonLimpiarPer;
     private javax.swing.JButton jButtonLimpiarPer1;
-    private javax.swing.JButton jButtonReportes;
+    private javax.swing.JButton jButtonReporteGeneral;
+    private javax.swing.JButton jButtonReporteIndividual;
     private javax.swing.JCheckBox jCheckBoxMostrarTP;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

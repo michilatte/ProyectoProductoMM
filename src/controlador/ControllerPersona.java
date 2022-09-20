@@ -1,6 +1,8 @@
 package controlador;
 
 import java.awt.Dimension;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
@@ -67,12 +69,13 @@ public class ControllerPersona {
                     personaSeleccionada();
                 }
             }
-
         });
         this.vistaP.getjButtonBuscarPer().addActionListener(b -> buscarPersona());
         this.vistaP.getjCheckBoxMostrarTP().addActionListener(bc -> buscarPersona());
         this.vistaP.getjButtonLimpiarPer1().addActionListener(lp -> limpiarBusquedaPer());
-
+        this.vistaP.getjButtonReporteGeneral().addActionListener(lr-> reporteGeneral());
+        this.vistaP.getjButtonReporteIndividual().addActionListener(li -> reporteIndividual());
+        
     }
 
     //M É T O D O S  C R U D
@@ -196,6 +199,23 @@ public class ControllerPersona {
             } else {
                 limpiarBusquedaPer();
             }
+        }
+    }
+
+    // REPORTESSSS
+    //llamar
+    public void reporteGeneral() {
+        Resouces.imprimirReporte(ManagerFactory.getConnection(manage.getEmf().createEntityManager()), "/reportes/Personas.jasper",new HashMap());
+    }
+    
+    public void reporteIndividual(){
+        if(per != null){
+            Map parameters = new HashMap();
+            parameters.put("id",per.getIdpersona());
+            Resouces.imprimirReporte(ManagerFactory.getConnection(manage.getEmf().createEntityManager()), "/reportes/pIndividual.jasper",parameters);
+   
+        }else{
+            Resouces.warning("Atención!!", "Debe seleccionar una persona");
         }
     }
 

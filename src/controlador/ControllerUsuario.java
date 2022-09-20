@@ -1,6 +1,8 @@
 package controlador;
 
 import java.awt.Dimension;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -74,12 +76,14 @@ public class ControllerUsuario {
         this.vistaU.getjButtonBuscarUsu().addActionListener(b -> buscarUsuario());
         this.vistaU.getjCheckBoxMostrarTU().addActionListener(bc -> buscarUsuario());
         this.vistaU.getjButtonLimpiarUsuB().addActionListener(lp ->limpiarBusquedaUsu());
+        this.vistaU.getjButtonReportarUs().addActionListener(lr-> reporteGeneral());
+        this.vistaU.getjButtonImprimirUsu().addActionListener(lr-> reporteIndividual());
     }
 
     //M É T O D O S  C R U D 
     //CREAR PERSONA
     public void crearUsuario() {
-        if (validarCampos() == false) {
+        if (validarCamposVacios()== false) {
             Resouces.warning("Atención!!", "Por favor, llene todos los campos");
         } else {
             usu = new Usuario();
@@ -95,7 +99,7 @@ public class ControllerUsuario {
 
     //EDITAR PERSONA
     public void editarUsuario() {
-        if (validarCampos() == false) {
+        if (validarCamposVacios()== false) {
             Resouces.warning("Atención!!", "Por favor, llene todos los campos");
         } else {
             if (usu != null) {
@@ -146,6 +150,25 @@ public class ControllerUsuario {
         }
     }
 
+    
+    // REPORTESSSS
+    //llamar
+    public void reporteGeneral() {
+        Resouces.imprimirReporte(ManagerFactory.getConnection(manage.getEmf().createEntityManager()), "/reportes/Usuarios.jasper",new HashMap());
+    }
+    public void reporteIndividual(){
+        if(usu != null){
+            Map parameters = new HashMap();
+            parameters.put("id",usu.getIdusuario());
+            Resouces.imprimirReporte(ManagerFactory.getConnection(manage.getEmf().createEntityManager()), "/reportes/usuIndividual.jasper",parameters);
+   
+        }else{
+            Resouces.warning("Atención!!", "Debe seleccionar un usuario");
+        }
+    }
+    
+    
+    
     public void limpiarUsuarios() {
         vistaU.getjTextFieldUsuario().setText("");
         vistaU.getjPasswordFieldClave().setText("");
@@ -191,27 +214,14 @@ public class ControllerUsuario {
         }
     }
 
-    public boolean validarCampos() {
+    public boolean validarCamposVacios() {
         boolean validar = true;
         if (this.vistaU.getjTextFieldUsuario().getText().isEmpty()) {
             validar = false;
-        } else {
-            if (!validacion.validarUsuario(this.vistaU.getjTextFieldUsuario().getText())) {
-                Resouces.warning("Atención!!", "Nombre de Usuario Incorrecto");
-                validar = false;
-            }
-        }
+        } 
         if (this.vistaU.getjPasswordFieldClave().getText().isEmpty()) {
             validar = false;
         }
-        else {
-            if (!validacion.validarContrasena(this.vistaU.getjPasswordFieldClave().getText())) {
-                Resouces.warning("Atención!!", "Contraseña Incorrecta");
-                validar = false;
-            }
-        }
         return validar;
     }
-
-   
 }

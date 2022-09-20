@@ -23,16 +23,25 @@ public class ViewProductos extends javax.swing.JInternalFrame {
         initComponents();
     }
 
+    public JButton getjButtonReportarProGeneral() {
+        return jButtonReportarProGeneral;
+    }
+
+    public void setjButtonReportarProGeneral(JButton jButtonReportarProGeneral) {
+        this.jButtonReportarProGeneral = jButtonReportarProGeneral;
+    }
+
+    public JButton getjButtonReporteIndivPro() {
+        return jButtonReporteIndivPro;
+    }
+
+    public void setjButtonReporteIndivPro(JButton jButtonReporteIndivPro) {
+        this.jButtonReporteIndivPro = jButtonReporteIndivPro;
+    }
+
+    
     public JButton getjButtonBuscarPro() {
         return jButtonBuscarPro;
-    }
-
-    public JButton getjButtonReportarPro() {
-        return jButtonReportarPro;
-    }
-
-    public void setjButtonReportarPro(JButton jButtonReportarPro) {
-        this.jButtonReportarPro = jButtonReportarPro;
     }
 
     public void setjButtonBuscarPro(JButton jButtonBuscarPro) {
@@ -71,13 +80,7 @@ public class ViewProductos extends javax.swing.JInternalFrame {
         this.jButtonEliminarPro = jButtonEliminarPro;
     }
 
-    public JButton getjButtonImprimirPro() {
-        return jButtonImprimirPro;
-    }
-
-    public void setjButtonImprimirPro(JButton jButtonImprimirPro) {
-        this.jButtonImprimirPro = jButtonImprimirPro;
-    }
+    
 
     public JButton getjButtonLimpiarPro() {
         return jButtonLimpiarPro;
@@ -160,8 +163,8 @@ public class ViewProductos extends javax.swing.JInternalFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableDatosProductos = new javax.swing.JTable();
         jButtonCancelarPro = new javax.swing.JButton();
-        jButtonImprimirPro = new javax.swing.JButton();
-        jButtonReportarPro = new javax.swing.JButton();
+        jButtonReporteIndivPro = new javax.swing.JButton();
+        jButtonReportarProGeneral = new javax.swing.JButton();
         jSeparator20 = new javax.swing.JSeparator();
         jSeparator21 = new javax.swing.JSeparator();
         jSeparator22 = new javax.swing.JSeparator();
@@ -243,15 +246,15 @@ public class ViewProductos extends javax.swing.JInternalFrame {
         jButtonCancelarPro.setBorder(null);
         jPanel5.add(jButtonCancelarPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, 90, 35));
 
-        jButtonImprimirPro.setBackground(new java.awt.Color(237, 242, 244));
-        jButtonImprimirPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/imprimir.png"))); // NOI18N
-        jButtonImprimirPro.setBorder(null);
-        jPanel5.add(jButtonImprimirPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 39, 35));
+        jButtonReporteIndivPro.setBackground(new java.awt.Color(237, 242, 244));
+        jButtonReporteIndivPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/imprimir.png"))); // NOI18N
+        jButtonReporteIndivPro.setBorder(null);
+        jPanel5.add(jButtonReporteIndivPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 220, 39, 35));
 
-        jButtonReportarPro.setBackground(new java.awt.Color(237, 242, 244));
-        jButtonReportarPro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/boxes.png"))); // NOI18N
-        jButtonReportarPro.setBorder(null);
-        jPanel5.add(jButtonReportarPro, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 30, 35));
+        jButtonReportarProGeneral.setBackground(new java.awt.Color(237, 242, 244));
+        jButtonReportarProGeneral.setIcon(new javax.swing.ImageIcon(getClass().getResource("/viewImages/boxes.png"))); // NOI18N
+        jButtonReportarProGeneral.setBorder(null);
+        jPanel5.add(jButtonReportarProGeneral, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 30, 35));
 
         jSeparator20.setBackground(new java.awt.Color(0, 29, 61));
         jSeparator20.setPreferredSize(new java.awt.Dimension(0, 3));
@@ -468,10 +471,10 @@ public class ViewProductos extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonCrearPro;
     private javax.swing.JButton jButtonEditarPro;
     private javax.swing.JButton jButtonEliminarPro;
-    private javax.swing.JButton jButtonImprimirPro;
     private javax.swing.JButton jButtonLimpiarPro;
     private javax.swing.JButton jButtonLimpiarProB;
-    private javax.swing.JButton jButtonReportarPro;
+    private javax.swing.JButton jButtonReportarProGeneral;
+    private javax.swing.JButton jButtonReporteIndivPro;
     private javax.swing.JCheckBox jCheckBoxMostrarT;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;

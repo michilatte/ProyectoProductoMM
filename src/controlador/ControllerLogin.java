@@ -19,8 +19,6 @@ public class ControllerLogin {
     private UsuarioJpaController modelo;
     private ViewAdmin vistaA;
    
-    
-    
 
     public ControllerLogin(ManagerFactory manager, ViewLogin vistaL, UsuarioJpaController modelo, ViewAdmin vistaA) {
         this.manager = manager;
@@ -31,12 +29,7 @@ public class ControllerLogin {
         this.vistaL.setLocationRelativeTo(null);
         this.vistaL.setVisible(true);
         iniciaControl();
-    }
-
-    public ControllerLogin(ManagerFactory manager, ViewLogin vistaL, UsuarioJpaController modelo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    }    
     public void iniciaControl(){
         vistaL.getjButtonEntrar().addActionListener(le->controlLogin());
         vistaL.getjButtonSalir().addActionListener(ls ->salirLogin() );
